@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button/Button";
-import SVGLogo from "../Svgs/SVGLogo";
+import SVGLogo from "../../assets/Svgs/SVGLogo";
 
 const Header = () => {
   return (
