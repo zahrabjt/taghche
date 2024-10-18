@@ -1,9 +1,10 @@
 "use client";
 
 import {useQuery} from "@tanstack/react-query";
-import {getBookDetails} from "@/services/books"; // سرویس مخصوص دریافت جزئیات کتاب
+import {getBookDetails} from "@/services/books"; 
 import React from "react";
-import {IBookDetails} from "@/types/interface"; // فرض کنید این اینترفیس برای جزئیات کتاب تعریف شده است
+import {IBookDetails} from "@/types/interface"; 
+import BookDetailsSkeleton from "@/components/Skeleton/BookDetailsSkeleton";
 
 
 function BookDetails({params}: { params: { id: string, slug: string } }) {
@@ -12,8 +13,7 @@ function BookDetails({params}: { params: { id: string, slug: string } }) {
         queryFn: () => getBookDetails(params.id, params.slug),
     });
 
-    if (isLoading) {
-        return <h2>در حال بارگذاری...</h2>;
+    if (isLoading) {    return <BookDetailsSkeleton/>;
     }
 
     const bookUrl = `https://taaghche.com/book/${params.id}`;
