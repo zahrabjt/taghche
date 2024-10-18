@@ -44,7 +44,7 @@ const Books = () => {
 
   if (isFetching && !data) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-4">
+      <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-4">
         {Array(12)
           .fill(0)
           .map((_, index) => (
@@ -55,7 +55,7 @@ const Books = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-4">
+    <div className="container  mx-auto  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-5 gap-4 p-12">
       {data?.pages.map((page: IBooksResponse) =>
         page.bookList.books.map((item: IBook) => (
           <BookCard key={item.id} book={item} />

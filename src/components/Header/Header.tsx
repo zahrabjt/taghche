@@ -1,17 +1,23 @@
 import React from "react";
 import Button from "../Button/Button";
-import SVGLogo from "../../assets/Svgs/SVGLogo";
+import SVGLogo from "../../../public/assets/Svgs/SVGLogo";
+import Image from "next/image";
 
 const Header = () => {
   return (
     <>
-      <div className="!w-full flex flex-row bg-[#f2e5d7] !justify-between !items-center p-5">
+      <div className="!w-full flex flex-row bg-[#f2e5d7] !justify-between !items-center px-5">
         <div className=" flex flex-row">
-          <SVGLogo />
+          <Image
+            src="/assets/images/Taaghche-Logo.png"
+            alt="taghche-logo"
+            width="100"
+            height="200"
+          ></Image>
         </div>
         <div className=" flex flex-row">search</div>
         <div className=" flex flex-row">
-          <Button size="full">login</Button>
+          <Button size="full">ورود</Button>
         </div>
       </div>
     </>

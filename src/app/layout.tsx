@@ -14,9 +14,9 @@ export default function RootLayout({
     <html lang="en" dir="rtl">
       <body className={`antialiased`}>
         <Header />
-        <Navbar />
+        {/* <Navbar /> */}
         <QueryProvider>{children}</QueryProvider>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
