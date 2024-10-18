@@ -4,7 +4,7 @@ import { getBooks } from "@/services/books";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React, { useEffect, useRef } from "react";
 import { IBook, IBooksResponse } from "@/types/interface";
-import BookCard from "./BookCard";
+import BookCard from "@/components/Books/BookCard";
 
 const Books = () => {
     const {
