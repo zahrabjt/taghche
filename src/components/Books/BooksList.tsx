@@ -55,7 +55,7 @@ const Books = () => {
   }
 
   return (
-    <div className="container  mx-auto  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-5 gap-4 p-12">
+    <div className="container  mx-auto px-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3  lg:grid-cols-4 md:gap-6 gap-y-8  mt-28 sm:!mt-44 ">
       {data?.pages.map((page: IBooksResponse) =>
         page.bookList.books.map((item: IBook) => (
           <BookCard key={item.id} book={item} />

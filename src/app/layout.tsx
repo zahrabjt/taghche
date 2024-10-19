@@ -13,8 +13,10 @@ export default function RootLayout({
   return (
     <html lang="en" dir="rtl">
       <body className={`antialiased`}>
-        <Header />
-        {/* <Navbar /> */}
+        <div className="fixed top-0 left-0 !w-full shadow-lg z-50">
+          <Header />
+          <Navbar />
+        </div>
         <QueryProvider>{children}</QueryProvider>
         {/* <Footer /> */}
       </body>

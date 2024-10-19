@@ -1,19 +1,50 @@
-import Link from 'next/link';
-import React from 'react';
+import { BookSquare, CallCalling, Home, UserSquare } from "iconsax-react";
+import Link from "next/link";
+import React from "react";
 
 const Navbar: React.FC = () => {
-    return (
-        <nav className="bg-primary p-4">
-            <div className="container mx-auto flex justify-between items-center">
-                <Link href="/" className="text-white text-lg font-bold">طاقچه</Link>
-                <div className="space-x-4">
-                    <Link href="/about" className="text-gray-300 hover:text-white">
-                        درباره ما
-                    </Link>
-                </div>
-            </div>
-        </nav>
-    );
+  return (
+    <nav className="bg-primary p-3  !hidden sm:!block ">
+      <div className="container !mx-auto flex !w-full gap-x-12 sm:!justify-center lg:!justify-start items-center  ">
+        <div>
+          <Link
+            href="/"
+            className="flex gap-x-2 items-center text-white text-lg font-bold cursor-pointer"
+          >
+            <Home size="16" color="white" />
+            خانه
+          </Link>
+        </div>
+        <div>
+          <Link
+            href="/"
+            className="flex gap-x-2 items-center text-white text-lg font-bold cursor-pointer"
+          >
+            <BookSquare size="16" color="white" />
+            دسته بندی کتاب
+          </Link>
+        </div>
+        <div>
+          <Link
+            href="/about-us"
+            className="flex gap-x-2 items-center text-white text-lg font-bold cursor-pointer"
+          >
+            <UserSquare size="16" color="white" />
+            درباره ما
+          </Link>
+        </div>
+        <div>
+          <Link
+            href="/contact-us"
+            className="flex gap-x-2 items-center text-white text-lg font-bold cursor-pointer"
+          >
+            <CallCalling size="16" color="white" />
+            تماس با ما
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
 };
 
 export default Navbar;

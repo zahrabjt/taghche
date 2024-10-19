@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { IBook } from "@/types/interface";
+import Lable from "../Lable/Lable";
 
 const BookCard = ({ book }: { book: IBook }) => {
   const authorNames = book.authors
@@ -8,29 +9,31 @@ const BookCard = ({ book }: { book: IBook }) => {
     .join(", ");
 
   return (
-    <div className=" bg-[#f2e5d7] border rounded-lg shadow-md p-4 cursor-pointer">
+    <div className="bg-secondary border rounded-xl shadow-md px-4 py-2 cursor-pointer hover:!scale-105 transition delay-300 duration-300 ease-in-out">
       <Link
+        className="flex flex-col gap-y-4"
         href={`/books/${book.id}/${book.title.replace(/\s+/g, "-")}`}
         passHref
       >
-        <div className="relative w-full h-50">
+        <div className="relative w-full !h-50">
           <img
             src={book.coverUri}
             alt={book.title}
-            className="!w-full !h-full object-cover"
+            className="!w-full !h-full object-cover rounded-md"
           />
         </div>
-
-        <div className="mt-4">
-          <h3 className="text-lg !items-center flex justify-center font-semibold truncate">
+        <div className="w-full !items-center flex justify-center mt-3">
+          <h3 className="text-xl text-wrap  text-primary  !font-bold truncate">
             {book.title}
           </h3>
-
-          <p className="text-sm text-gray-600">نویسندگان: {authorNames}</p>
-
-          <p className="text-lg font-bold text-green-600">قیمت: {book.price}</p>
-
-          <div className="flex items-center mt-2">
+        </div>
+        <div className="!w-full !items-center flex !justify-center md:!justify-start">
+          <p className="md:text-sm lg:!text-sm !text-lg text-gray-400">
+            <Lable>نویسندگان</Lable> {authorNames}
+          </p>
+        </div>
+        <div className="flex flex-col !justify-between lg:flex-row gap-y-3 !items-center ">
+          <div className="flex items-center">
             {[...Array(5)].map((_, index) => (
               <svg
                 key={index}
@@ -51,6 +54,11 @@ const BookCard = ({ book }: { book: IBook }) => {
                 />
               </svg>
             ))}
+          </div>
+          <div className="flex !items-center justify-center ">
+            <p className=" rounded-md text-sm px-1.5 py-0.5 bg-primary bg-opacity-90 font-bold text-secondary">
+              {book.price} تومان
+            </p>
           </div>
         </div>
       </Link>
