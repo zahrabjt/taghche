@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <>
       <footer
-        className="!w-full"
+        className="!w-full "
         style={{
           background:
             "linear-gradient(90deg, rgba(242,229,215,1) 3%, rgba(0,162,164,1) 50%, rgba(242,240,238,1) 90%)",

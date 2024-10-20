@@ -169,7 +169,7 @@ function BookDetails({ params }: { params: { id: string; slug: string } }) {
           >
             {" "}
             طاقچه
-          </a>{" "}
+          </a>
           ارائه شده است.
         </text>
       </div>
