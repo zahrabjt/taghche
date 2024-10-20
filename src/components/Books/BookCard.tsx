@@ -29,7 +29,7 @@ const BookCard = ({ book }: { book: IBook }) => {
         </div>
         <div className="!w-full !items-center flex !justify-center md:!justify-start">
           <p className="md:text-sm lg:!text-sm !text-lg text-gray-400">
-            <Lable>نویسندگان</Lable> {authorNames}
+            <Lable type="card">نویسندگان</Lable> {authorNames}
           </p>
         </div>
         <div className="flex flex-col !justify-between lg:flex-row gap-y-3 !items-center ">

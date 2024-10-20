@@ -1,6 +1,6 @@
 const BookDetailsSkeleton = () => {
     return (
-        <div className="container mx-auto p-6 animate-pulse">
+        <div className="container mx-auto p-6 animate-pulse mt-28 sm:!mt-44">
             <div className="w-48 h-64 bg-gray-200 mb-6"></div>
             <div className="h-8 bg-gray-200 rounded mb-2 w-48"></div>
             <div className="h-6 bg-gray-200 rounded mb-4 w-32"></div>

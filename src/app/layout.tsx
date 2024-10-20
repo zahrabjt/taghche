@@ -18,7 +18,7 @@ export default function RootLayout({
           <Navbar />
         </div>
         <QueryProvider>{children}</QueryProvider>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );

@@ -4,7 +4,7 @@ import React from "react";
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="bg-primary p-3  !hidden sm:!block ">
+    <nav className="bg-primary p-3  !hidden sm:!block shadow-md">
       <div className="container !mx-auto flex !w-full gap-x-12 sm:!justify-center lg:!justify-start items-center  ">
         <div>
           <Link
