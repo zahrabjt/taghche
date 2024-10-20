@@ -15,11 +15,6 @@ const SVGlinkedin = () => {
           fill="#FEFEFE"
         />
       </g>
-      <defs>
-        <clipPath id="clip0_1139_5853">
-          <rect width="14" height="14" fill="white" />
-        </clipPath>
-      </defs>
     </svg>
   );
 };
