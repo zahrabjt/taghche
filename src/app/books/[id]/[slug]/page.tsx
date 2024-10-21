@@ -12,35 +12,30 @@ import Lable from "@/components/Lable/Lable";
 import Span from "@/components/Span/Span";
 
 function BookDetails({ params }: { params: { id: string; slug: string } }) {
-  // const { data, isLoading, error } = useQuery<IBookDetails>({
-  //   queryKey: ["book", params.id, params.slug],
-  //   queryFn: () => getBookDetails(params.id, params.slug),
-  // });
-  // if (error) {
-  //   return <div>صفحات</div>;
-  // }
-  // if (isLoading) {
-  //   return <BookDetailsSkeleton />;
-  // }
+  const { data, isLoading, error } = useQuery<IBookDetails>({
+    queryKey: ["book", params.id, params.slug],
+    queryFn: () => getBookDetails(params.id, params.slug),
+  });
+  if (error) {
+    return <div>صفحات</div>;
+  }
+  if (isLoading) {
+    return <BookDetailsSkeleton />;
+  }
   const bookUrl = `https://taaghche.com/book/${params.id}`;
-  // const book = data?.pageProps?.bookPage?.book;
+  const book = data?.pageProps?.bookPage?.book;
 
   return (
     <div className=" container mx-auto flex flex-col mb-10">
       <div className=" lg:grid lg:grid-cols-8 flex flex-col !w-full  mx-auto sm:grid-cols-2 gap-4 mb-10 mt-28 sm:!mt-44">
         <div className=" col-span-2 flex flex-col gap-y-6 px-4 !items-center my-10 ">
-          <Image
-            src="/assets/images/Taaghche-Logo.png"
-            className=" h-[70%] !w-full object-cover  rounded-xl shadow-xl"
-            alt="taghche-logo"
-            width="100"
-            height="200"
-          ></Image>
-          {/* <img
+          <img
             src={book?.coverUri}
             alt={book?.title}
-            className=" h-[70%] object-cover  rounded-xl shadow-xl"
-          /> */}
+            width="100"
+            height="200"
+            className=" h-[70%] !w-full object-cover  rounded-xl shadow-xl"
+          />
           <div className="flex gap-x-4  lg:flex-row gap-y-2 !w-ful">
             <a
               href={bookUrl}
@@ -64,56 +59,42 @@ function BookDetails({ params }: { params: { id: string; slug: string } }) {
         </div>
         <div className="col-span-6 my-10 !justify-start !items-start flex gap-y-6 flex-col lg:!items-start px-4 lg:!justify-start ">
           <div className="flex">
-            <h1 className="text-2xl font-bold !text-primary">
-              طاقچه
-              {/* {book?.title} */}
-            </h1>
+            <h1 className="text-2xl font-bold !text-primary">{book?.title}</h1>
           </div>
           <div className="flex items-center">
             <Lable type="detail">نویسندگان</Lable>
             <Span>
-              مجید بهجتی
-              {/* {book?.authors
-                  .map(
-                    (author: any) => `${author.firstName} ${author.lastName}`
-                  )
-                  .join(", ")} */}
+              {book?.authors
+                .map((author: any) => `${author.firstName} ${author.lastName}`)
+                .join(", ")}
             </Span>
           </div>
           <div className="flex ">
             <Lable type="detail">ناشر</Lable>
             <div className="">
               <p className="text-lg font-medium text-gray-400 mx-4">
-                مجید بهجتی
-                {/* {book?.publisher} */}
+                {book?.publisher}
               </p>
             </div>
           </div>
           <div className="flex">
             <Lable type="detail">تعداد صفحات</Lable>
             <div className="">
-              <Span>
-                {/* {book?.numberOfPages} */}
-                370
-              </Span>
+              <Span>{book?.numberOfPages}</Span>
             </div>
           </div>
           <div className="flex">
             <Lable type="detail"> قیمت فیزیکی</Lable>
             <div className="">
               <p className="text-lg font-medium text-gray-400 mx-4">
-                230000
-                {/* {book?.price} */}
+                {book?.price}
               </p>
             </div>
           </div>
           <div className="flex">
             <Lable type="detail">قیمت</Lable>
             <div className="">
-              <Span>
-                230000
-                {/* {book?.price} */}
-              </Span>
+              <Span>{book?.price}</Span>
             </div>
           </div>
 
@@ -124,9 +105,9 @@ function BookDetails({ params }: { params: { id: string; slug: string } }) {
                 <svg
                   key={index}
                   xmlns="http://www.w3.org/2000/svg"
-                  // fill={
-                  //   index < Math.floor(book?.rating) ? "currentColor" : "none"
-                  // }
+                  fill={
+                    index < Math.floor(book?.rating) ? "currentColor" : "none"
+                  }
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   className="w-5 h-5 text-yellow-400"
@@ -143,10 +124,7 @@ function BookDetails({ params }: { params: { id: string; slug: string } }) {
           <div className="flex">
             <Lable type="detail">توضیحات</Lable>
             <div className="!text-justify">
-              <Span>
-                {/* {book?.description} */}
-                این کتاب در صفحه روانشناسی قرار دارد.
-              </Span>
+              <Span>{book?.description}</Span>
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
         </div>
         <div>
           <Link
-            href="/"
+            href="/not-found"
             className="flex gap-x-2 items-center text-white text-lg font-bold cursor-pointer"
           >
             <BookSquare size="16" color="white" />
