@@ -20,6 +20,7 @@ export interface IBookDetails extends IBook {
   numberOfPages: string;
   pageProps?: any;
   data?: any;
+  onError?:any;
 }
 
 export interface IAuthor {

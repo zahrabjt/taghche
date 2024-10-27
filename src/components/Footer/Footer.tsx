@@ -8,16 +8,15 @@ import SVGTelegram from "../Svgs/SVGTelegram";
 import SVGPlaystore from "../Svgs/SVGPlaystore";
 import SVGBazar from "../Svgs/SVGBazar";
 import SVGGlobal from "../Svgs/SVGGlobal";
-import Home from "@/app/page";
 
 const Footer = () => {
   return (
     <>
       <footer
-        className="!w-full "
+        className="!w-full bottom-0"
         style={{
           background:
-            "linear-gradient(90deg, rgba(242,229,215,1) 3%, rgba(0,162,164,1) 50%, rgba(242,240,238,1) 90%) bottom-0",
+            "linear-gradient(90deg, rgba(242,229,215,1) 3%, rgba(0,162,164,1) 50%, rgba(242,240,238,1) 90%) ",
         }}
       >
         <div className=" !w-full !pb-16 !pt-10 !px-10 flex flex-col gap-y-6 gap-x-6 lg:grid lg:grid-cols-12  ">

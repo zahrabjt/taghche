@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import { EmojiSad } from "iconsax-react";
+import notFound from "next/navigation";
 
-const page = () => {
+export default async function NotFound() {
   return (
     <>
       <div className="container gap-y-4 !mx-auto !w-full !h-full flex  flex-col !items-center !justify-center mb-10 mt-28 sm:!mt-44 ">
@@ -25,4 +26,3 @@ const page = () => {
   );
 };
 
-export default page;

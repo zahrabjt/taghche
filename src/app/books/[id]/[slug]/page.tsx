@@ -5,23 +5,32 @@ import { getBookDetails } from "@/services/books";
 import React from "react";
 import { IBookDetails } from "@/types/interface";
 import BookDetailsSkeleton from "@/components/Skeleton/BookDetailsSkeleton";
-import { AddCircle, Share } from "iconsax-react";
+import { AddCircle, EmojiSad, Share } from "iconsax-react";
 import Lable from "@/components/Lable/Lable";
 import Span from "@/components/Span/Span";
+import NotFound from "@/components/NotFound/NotFound";
 
 function BookDetails({ params }: { params: { id: string; slug: string } }) {
   const { data, isLoading, error } = useQuery<IBookDetails>({
     queryKey: ["book", params.id, params.slug],
-    queryFn: () => getBookDetails(params.id, params.slug),
+    queryFn: async () => {
+      const bookDetail = await getBookDetails(params.id, params.slug);
+      if (bookDetail) {
+        return bookDetail;
+      }
+      throw new Error("error");
+    },
   });
-  if (error) {
-    return <div>صفحات</div>;
-  }
+
   if (isLoading) {
     return <BookDetailsSkeleton />;
   }
+
   const bookUrl = `https://taaghche.com/book/${params.id}`;
   const book = data?.pageProps?.bookPage?.book;
+  if (!book) {
+    return <NotFound />;
+  }
 
   return (
     <div className=" container mx-auto flex flex-col mb-10">

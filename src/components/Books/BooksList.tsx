@@ -2,7 +2,7 @@
 
 import { getBooks } from "@/services/books";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IBook, IBooksResponse } from "@/types/interface";
 import BookCard from "@/components/Books/BookCard";
 import Spinner from "@/components/Spinner/Spinner";
@@ -10,15 +10,17 @@ import BookListSkeleton from "../Skeleton/BookListSkeleton";
 import SortFile from "../Sort/Sort";
 
 const Books = () => {
+  const [sortCriteria, setSortCriteria] = useState({ type: '', order: '' });
+
   const { data, isFetching, isFetchingNextPage, fetchNextPage, hasNextPage } =
-    useInfiniteQuery<IBooksResponse>({
-      queryKey: ["books"],
-      queryFn: ({ pageParam = "0-0-0-16" }) => getBooks({ pageParam }),
-      initialPageParam: "0-0-0-16",
-      getNextPageParam: (lastPage) => {
-        return lastPage?.hasMore ? lastPage.nextOffset : undefined;
-      },
-    });
+      useInfiniteQuery<IBooksResponse>({
+        queryKey: ["books"],
+        queryFn: ({ pageParam = "0-0-0-16" }) => getBooks({ pageParam }),
+        initialPageParam: "0-0-0-16",
+        getNextPageParam: (lastPage) => {
+          return lastPage?.hasMore ? lastPage.nextOffset : undefined;
+        },
+      });
 
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement>(null);
@@ -39,51 +41,58 @@ const Books = () => {
     };
   }, [isFetchingNextPage, fetchNextPage, hasNextPage]);
 
+  const sortBooks = (books: IBook[]) => {
+    if (!sortCriteria.type) return books;
 
+    return [...books].sort((a, b) => {
+      const valueA = sortCriteria.type === 'price' ? a.price : a.rating;
+      const valueB = sortCriteria.type === 'price' ? b.price : b.rating;
+      return sortCriteria.order === 'asc' ? valueA - valueB : valueB - valueA;
+    });
+  };
 
-  
   if (isFetching && !data) {
     return (
-      <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-4">
-        {Array(12)
-          .fill(0)
-          .map((_, index) => (
-            <BookListSkeleton key={index} />
-          ))}
-      </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-4">
+          {Array(12)
+              .fill(0)
+              .map((_, index) => (
+                  <BookListSkeleton key={index} />
+              ))}
+        </div>
     );
   }
 
   return (
-    <>
-      <div className="container mx-auto !w-full flex flex-col gap-y-5 justify-center items-center sm:!mt-44  mt-28">
-        <div className="!w-full px-4 lg:px-2">
-          <SortFile />
-        </div>
-        <div className="px-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3  lg:grid-cols-4 md:gap-6 gap-y-8">
-          {data?.pages.map((page: IBooksResponse) =>
-            page.bookList.books.map((item: IBook) => (
-              <BookCard key={item.id} book={item} />
-            ))
-          )}
-          {isFetchingNextPage && (
-            <>
-              {Array(6)
-                .fill(0)
-                .map((_, index) => (
-                  <BookListSkeleton key={index} />
-                ))}
-            </>
-          )}
-          <div
-            ref={loadMoreRef}
-            style={{ height: "20px", backgroundColor: "transparent" }}
-          ></div>
+      <>
+        <div className="container mx-auto !w-full flex flex-col gap-y-5 justify-center items-center sm:!mt-44 mt-28">
+          <div className="!w-full px-4 lg:px-2">
+            <SortFile setSortCriteria={setSortCriteria} />
+          </div>
+          <div className="px-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-y-8">
+            {data?.pages.map((page: IBooksResponse) =>
+                sortBooks(page.bookList.books).map((item: IBook) => (
+                    <BookCard key={item.id} book={item} />
+                ))
+            )}
+            {isFetchingNextPage && (
+                <>
+                  {Array(6)
+                      .fill(0)
+                      .map((_, index) => (
+                          <BookListSkeleton key={index} />
+                      ))}
+                </>
+            )}
+            <div
+                ref={loadMoreRef}
+                style={{ height: "20px", backgroundColor: "transparent" }}
+            ></div>
 
-          {isFetchingNextPage && <Spinner />}
+            {isFetchingNextPage && <Spinner />}
+          </div>
         </div>
-      </div>
-    </>
+      </>
   );
 };
 
