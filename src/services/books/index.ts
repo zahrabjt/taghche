@@ -19,7 +19,7 @@ const getBookDetails = async (
   slug: string
 ): Promise<IBookDetails> => {
   const baseUrl = decodeURI(
-    "https://taaghche.com/_next/data/L-zOzPQLKeoCLlyfctrKg/book"
+    "https://taaghche.com/_next/data/TMYJQfdMSCnesTtW_eu_M/book"
   );
 
   const encodedTitle = encodeURIComponent(slug);

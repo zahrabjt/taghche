@@ -17,7 +17,7 @@ const Footer = () => {
         className="!w-full "
         style={{
           background:
-            "linear-gradient(90deg, rgba(242,229,215,1) 3%, rgba(0,162,164,1) 50%, rgba(242,240,238,1) 90%)",
+            "linear-gradient(90deg, rgba(242,229,215,1) 3%, rgba(0,162,164,1) 50%, rgba(242,240,238,1) 90%) bottom-0",
         }}
       >
         <div className=" !w-full !pb-16 !pt-10 !px-10 flex flex-col gap-y-6 gap-x-6 lg:grid lg:grid-cols-12  ">
