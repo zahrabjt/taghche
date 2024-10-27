@@ -25,24 +25,23 @@ const Books = () => {
 
   useEffect(() => {
     if (isFetchingNextPage) return;
-
     if (observerRef.current) observerRef.current.disconnect();
-
     observerRef.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && hasNextPage) {
         fetchNextPage();
       }
     });
-
     if (loadMoreRef.current) {
       observerRef.current.observe(loadMoreRef.current);
     }
-
     return () => {
       if (observerRef.current) observerRef.current.disconnect();
     };
   }, [isFetchingNextPage, fetchNextPage, hasNextPage]);
 
+
+
+  
   if (isFetching && !data) {
     return (
       <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-4">

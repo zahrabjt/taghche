@@ -5,8 +5,6 @@ import { getBookDetails } from "@/services/books";
 import React from "react";
 import { IBookDetails } from "@/types/interface";
 import BookDetailsSkeleton from "@/components/Skeleton/BookDetailsSkeleton";
-import { space } from "postcss/lib/list";
-import Image from "next/image";
 import { AddCircle, Share } from "iconsax-react";
 import Lable from "@/components/Lable/Lable";
 import Span from "@/components/Span/Span";

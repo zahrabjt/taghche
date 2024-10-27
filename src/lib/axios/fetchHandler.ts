@@ -12,9 +12,6 @@ interface IPayload extends AxiosRequestConfig {
 const fetchHandler = async (baseUrl:any, url: string, options?: IPayload): Promise<{ data: any }> => {
     const cookies = new Cookies()
     const token = cookies.get("access_token")
-
-    // const baseUrlV2 = `${process.env.NEXT_PUBLIC_BASE_URL_V2}`
-
     type ICustomErrorMessage = {
         message: Record<string, string>
     }
@@ -47,7 +44,6 @@ const fetchHandler = async (baseUrl:any, url: string, options?: IPayload): Promi
                 })
                 .catch((err: AxiosError & ICustomErrorMessage) => {
                     if (err?.response?.status === 401) {
-                        // do some action for refresh token and stuff
                     } else {
                         // errorHandler(err.message);
                         // return err;

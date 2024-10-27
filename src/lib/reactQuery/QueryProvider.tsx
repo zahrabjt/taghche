@@ -12,7 +12,6 @@ const QueryProvider = ({ children }: { children: React.ReactNode }) => {
           queries: {
             refetchOnWindowFocus: false,
             retry: false,
-            // below codes for runnig server side react-query is required
             refetchOnReconnect: false,
             refetchOnMount: false,
           },

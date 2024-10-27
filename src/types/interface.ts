@@ -1,5 +1,3 @@
-// import { PageProps } from "./../../.next/types/app/page";
-import { PageProps } from "./../../.next/types/app/books/[id]/[slug]/page";
 export interface IBook {
   id: string;
   title: string;

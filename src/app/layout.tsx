@@ -11,7 +11,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" dir="rtl">
+    <html lang="fa" dir="rtl">
+      <head>
+        <title>طاقچه</title>
+      </head>
       <body className={`antialiased`}>
         <div className="fixed top-0 left-0 !w-full shadow-lg z-50">
           <Header />
